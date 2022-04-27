@@ -43,9 +43,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductChange(false)" class="btn btn-default"><i
+                                 class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange(true)" class="btn btn-default"><i
+                                 class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$<span id="case-tatol">59</span></h5>
@@ -80,28 +82,46 @@
 
 
    <script>
-      document.getElementById('case-increase').addEventListener('click', function () {
+
+
+
+
+      function handleProductChange(isIncrease) {
          const caseInput = document.getElementById('case-count');
          const caseCount = parseInt(caseInput.value);
-         caseInput.value = caseCount + 1;
-         const caseTatol = (caseCount + 1) * 59;
-         //   console.log(caseTatol);
-
-         document.getElementById('case-tatol').innerText = caseTatol;
-      });
-
-      document.getElementById('case-decrease').addEventListener('click', function () {
-         const caseInput = document.getElementById('case-count');
-         const caseCount = parseInt(caseInput.value);
-         const caseNewCount = caseCount - 1;
+         let caseNewCount = caseCount;
+         if (isIncrease == true) {
+            caseNewCount = caseCount + 1;
+         } else {
+            caseNewCount = caseCount - 1;
+         }
          caseInput.value = caseNewCount;
          if (caseInput.value == -1) caseInput.value = 0;
          document.getElementById('case-tatol').innerText = caseInput.value * 59;
+      }
 
 
 
+      // document.getElementById('case-increase').addEventListener('click', function () {
+      //    const caseInput = document.getElementById('case-count');
+      //    const caseCount = parseInt(caseInput.value);
+      //    caseInput.value = caseCount + 1;
+      //    const caseTatol = (caseCount + 1) * 59;
+      //    //   console.log(caseTatol);
 
-      })
+      //    document.getElementById('case-tatol').innerText = caseTatol;
+      // });
+
+      // document.getElementById('case-decrease').addEventListener('click', function () {
+      //    const caseInput = document.getElementById('case-count');
+      //    const caseCount = parseInt(caseInput.value);
+      //    const caseNewCount = caseCount - 1;
+      //    caseInput.value = caseNewCount;
+      //    if (caseInput.value == -1) caseInput.value = 0;
+      //    document.getElementById('case-tatol').innerText = caseInput.value * 59;
+
+
+      // })
 
 
 
