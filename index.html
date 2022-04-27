@@ -20,7 +20,7 @@
                   <div class="row">
                      <div class="col-md-7 center-item">
                         <img src="images/product-1.png" alt="">
-                        <h5>iPhone 11 128GB Black</h5>
+                        <h5>iPhone 12 128GB Black</h5>
                      </div>
 
                      <div class="col-md-5 center-item">
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="case-tatol">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +77,38 @@
          </div>
       </div>
    </section>
+
+
+   <script>
+      document.getElementById('case-increase').addEventListener('click', function () {
+         const caseInput = document.getElementById('case-count');
+         const caseCount = parseInt(caseInput.value);
+         caseInput.value = caseCount + 1;
+         const caseTatol = (caseCount + 1) * 59;
+         //   console.log(caseTatol);
+
+         document.getElementById('case-tatol').innerText = caseTatol;
+      });
+
+      document.getElementById('case-decrease').addEventListener('click', function () {
+         const caseInput = document.getElementById('case-count');
+         const caseCount = parseInt(caseInput.value);
+         const caseNewCount = caseCount - 1;
+         caseInput.value = caseNewCount;
+         if (caseInput.value == -1) caseInput.value = 0;
+         document.getElementById('case-tatol').innerText = caseInput.value * 59;
+
+
+
+
+      })
+
+
+
+
+
+   </script>
+
 </body>
 
 </html>
